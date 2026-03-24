@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+}
+
+@layer base {
+  :root {
+    /* Warm paper + mocha ink — amber-forward, softened contrast */
+    --background: oklch(0.988 0.016 78);
+    --foreground: oklch(0.3 0.035 58);
+    --card: oklch(0.995 0.012 76);
+    --card-foreground: oklch(0.3 0.035 58);
+    --primary: oklch(0.76 0.15 68);
+    --primary-foreground: oklch(0.22 0.04 52);
+    --secondary: oklch(0.68 0.095 55);
+    --secondary-foreground: oklch(0.2 0.035 55);
+    --accent: oklch(0.9 0.055 78);
+    --accent-foreground: oklch(0.28 0.04 58);
+    --muted: oklch(0.955 0.018 76);
+    --muted-foreground: oklch(0.48 0.028 62);
+    --destructive: oklch(0.52 0.2 28);
+    --success: oklch(0.62 0.16 142);
+    --warning: oklch(0.78 0.16 78);
+    /* NOTE: warm “info” — cocoa/amber, not blue */
+    --info: oklch(0.58 0.1 62);
+    --border: oklch(0.9 0.022 72);
+    --input: oklch(0.9 0.022 72);
+    --ring: oklch(0.7 0.14 68);
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+    /* Depth: mocha-tinted umbra, no cool/navy cast */
+    --shadow-ink: oklch(0.32 0.045 52 / 0.12);
+    --shadow-ink-soft: oklch(0.32 0.045 52 / 0.07);
+    --shadow-xs: 0 1px 2px var(--shadow-ink-soft);
+    --shadow-sm: 0 1px 3px var(--shadow-ink-soft), 0 1px 2px var(--shadow-ink-soft);
+    --shadow-md: 0 4px 12px var(--shadow-ink-soft), 0 2px 4px var(--shadow-ink-soft);
+    --shadow-lg: 0 12px 28px var(--shadow-ink-soft), 0 4px 8px var(--shadow-ink-soft);
+    --shadow-xl: 0 24px 48px var(--shadow-ink-soft), 0 8px 16px var(--shadow-ink-soft);
+    --shadow-glow: 0 0 28px oklch(0.72 0.14 68 / 0.28);
+    --space-0: 0;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --font-sans: "Inter Variable", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono Variable", monospace;
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .dark {
+    --background: oklch(0.22 0.024 58);
+    --foreground: oklch(0.96 0.012 78);
+    --card: oklch(0.26 0.028 56);
+    --card-foreground: oklch(0.96 0.012 78);
+    --primary: oklch(0.78 0.15 70);
+    --secondary: oklch(0.64 0.085 54);
+    --secondary-foreground: oklch(0.96 0.012 78);
+    --accent: oklch(0.32 0.04 58);
+    --accent-foreground: oklch(0.94 0.02 78);
+    --muted: oklch(0.3 0.026 56);
+    --muted-foreground: oklch(0.74 0.028 72);
+    --border: oklch(0.36 0.03 54);
+    --input: oklch(0.32 0.028 56);
+    --shadow-ink: oklch(0.08 0.02 58 / 0.45);
+    --shadow-ink-soft: oklch(0.08 0.02 58 / 0.28);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .amber-surface {
+    background: color-mix(in oklab, var(--card) 88%, oklch(0.97 0.02 72));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .amber-mesh {
+    background:
+      radial-gradient(ellipse 120% 80% at 8% 0%, oklch(0.93 0.09 72 / 0.5), transparent 42%),
+      radial-gradient(ellipse 90% 70% at 92% 8%, oklch(0.9 0.07 58 / 0.38), transparent 40%),
+      radial-gradient(ellipse 100% 60% at 72% 100%, oklch(0.88 0.06 48 / 0.35), transparent 45%),
+      radial-gradient(circle at 48% 42%, oklch(0.96 0.025 76 / 0.85), transparent 55%),
+      linear-gradient(
+        165deg,
+        color-mix(in oklab, var(--background) 88%, oklch(0.94 0.04 72)),
+        var(--background)
+      );
+  }
+
+  /* DESIGN: Dark mode mesh uses lower lightness amber tones to avoid white blowout */
+  :is(.dark) .amber-mesh {
+    background:
+      radial-gradient(ellipse 120% 80% at 8% 0%, oklch(0.38 0.08 55 / 0.5), transparent 42%),
+      radial-gradient(ellipse 90% 70% at 92% 8%, oklch(0.35 0.06 45 / 0.38), transparent 40%),
+      radial-gradient(ellipse 100% 60% at 72% 100%, oklch(0.33 0.05 40 / 0.35), transparent 45%),
+      radial-gradient(circle at 48% 42%, oklch(0.25 0.03 60 / 0.6), transparent 55%),
+      linear-gradient(
+        165deg,
+        color-mix(in oklab, var(--background) 88%, oklch(0.22 0.04 55)),
+        var(--background)
+      );
+  }
+
+  .amber-glass {
+    background: color-mix(in oklab, var(--card) 78%, oklch(1 0 0 / 0.12));
+    backdrop-filter: blur(12px) saturate(1.08);
+    box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.45);
+  }
+
+  .amber-grid-bg {
+    background-image:
+      linear-gradient(to right, oklch(0.78 0.035 68 / 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.78 0.035 68 / 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 85% 70% at 50% 38%, black 0%, transparent 78%);
+  }
+
+  :is(.dark) .amber-grid-bg {
+    background-image:
+      linear-gradient(to right, oklch(0.45 0.03 55 / 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.45 0.03 55 / 0.12) 1px, transparent 1px);
+  }
+
+  :is(.dark) .amber-glass {
+    box-shadow: var(--shadow-sm), inset 0 1px 0 oklch(1 0 0 / 0.08);
+  }
+}
